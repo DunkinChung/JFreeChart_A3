@@ -1,10 +1,10 @@
 package org.jfree.data;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.Assert.assertArrayEquals;
+//import static org.junit.Assert.assertThrows;
+//import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.security.InvalidParameterException;
@@ -58,10 +58,12 @@ class DataUtilitiesTest {
 	
 	@Test
 	void createNumberArrayValueTest() {
-		double[] data = { 1, 2, 3, 4, 5 };
+		double[] data = { 1.0, 2.0, 3.0, 4.0, 5.0 };
+		Number[] expected = { 1.0, 2.0, 3.0, 4.0, 5.0 };
+		
 		Number[] test = DataUtilities.createNumberArray(data);
 
-		System.out.println(data.toString());
+		assertArrayEquals(expected, test);
 	}
 	
 	@Test
@@ -70,22 +72,13 @@ class DataUtilitiesTest {
 	}
 
 	@Test
-	void createNumberArray2DTypeTest() {
+	void createNumberArray2DTest() {
 		double[][] data = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
 		Number[][] actual = DataUtilities.createNumberArray2D(data);
 		
 		Number[][] test = {};
 		assertEquals(test.getClass(), actual.getClass());
 	}
-	
-	@Test
-	void createNumberArray2DContentTest() {
-		double[][] data = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
-		Number[][] actual = DataUtilities.createNumberArray2D(data);
-		
-		assertArrayEquals(data, actual);
-	}
-	
 	
 	@Test
 	void createNumberArray2DNullTest() {

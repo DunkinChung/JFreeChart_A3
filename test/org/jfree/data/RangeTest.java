@@ -1,6 +1,6 @@
 package org.jfree.data;
 
-import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.security.InvalidParameterException;
