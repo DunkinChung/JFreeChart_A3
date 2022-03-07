@@ -61,7 +61,8 @@ class RangeTest {
 	@CsvSource({ "1, 5, 3.0, true, small value", "1, 100, 50.5, true, decimal value",
 			"10000, 2147483647, 1073746823.5, true, max integer upperbound", 
 			"-1, 1, 1, true, negative lowerbound",
-			"1, 5, 8, false, Wrong value", "1, 5, 8, true, wrong boolean"})
+			"1, 5, 8, false, Wrong value", 
+			"1, 5, 4, true, wrong boolean"})
 	void containsTest(int lb, int ub, double value, boolean expected, String msg) {
 		Range central = new Range(lb, ub);
 
@@ -73,7 +74,7 @@ class RangeTest {
 	@CsvSource({ "1, 5, 1, 5, true, small value", 
 		"1, 100, -3, 99, false, not matching",
 			"10000, 2147483647,10000, 2147483647, true, max integer upperbound", 
-			"1, 5, 1, 5, false, wrong boolean" })
+			"1, 5, 1, 5, true, they equal" })
 	void equalsTest(int lb, int ub, int lbe, int ube, boolean expected, String msg) {
 		Range central = new Range(lb, ub);
 		Range expectedRange = new Range(lbe, ube);
@@ -91,8 +92,7 @@ class RangeTest {
 //expand test
 	@ParameterizedTest
 	@CsvSource({ "1, 5, 1.0, 5.0, -3, 21, small value", 
-		"-1, 5, 1.0, 5.0, -7, 29, negative lower",
-			"1, 5, 1.0, 5.0, -6, 21, mismatch" })
+		"-1, 5, 1.0, 5.0, -7, 29, negative lower"})
 	void expandTest(int lb, int ub, double lowerMargin, double upperMargin, double lbe, double ube, String msg) {
 		Range central = new Range(lb, ub);
 		Range expectedRange = new Range(lbe, ube);
