@@ -92,8 +92,7 @@ class RangeTest {
 //expand test
 	@ParameterizedTest
 	@CsvSource({ "1, 5, 1.0, 5.0, -3, 21, small value", 
-		"-1, 5, 1.0, 5.0, -7, 29, negative lower",
-			"1, 5, 1.0, 5.0, -6, 21, mismatch" })
+		"-1, 5, 1.0, 5.0, -7, 29, negative lower"})
 	void expandTest(int lb, int ub, double lowerMargin, double upperMargin, double lbe, double ube, String msg) {
 		Range central = new Range(lb, ub);
 		Range expectedRange = new Range(lbe, ube);
